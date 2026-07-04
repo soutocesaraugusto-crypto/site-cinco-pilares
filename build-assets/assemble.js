@@ -16,7 +16,8 @@ let out = template
   .replace('{{COVER1}}', imgDataUri('livro1.jpg', 'image/jpeg'))
   .replace('{{COVER2}}', imgDataUri('livro2.jpg', 'image/jpeg'))
   .replace('{{COVER3}}', imgDataUri('livro3.jpg', 'image/jpeg'))
-  .split('{{HERO_BOY}}').join(imgDataUri('menino_hero.png', 'image/png'));
+  .split('{{HERO_BOY}}').join(imgDataUri('menino_hero.png', 'image/png'))
+  .split('{{LOGO_METODO_ISAN}}').join(imgDataUri('logo-metodo-isan.png', 'image/png'));
 
 const outPath = path.join(dir, '..', 'index.html');
 fs.writeFileSync(outPath, out);

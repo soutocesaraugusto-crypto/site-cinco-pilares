@@ -116,6 +116,9 @@ header.scrolled{border-bottom-color:var(--line)}
 .brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
 .brand-name{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.02em;color:var(--text)}
 .brand-tag{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.brand-logo{display:inline-flex;align-items:center;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:var(--shadow-sm)}
+.brand-logo img{height:30px;width:auto;display:block}
+@media (max-width:640px){.brand-logo img{height:26px}}
 nav.links{display:flex;gap:34px;align-items:center}
 nav.links a{font-size:.86rem;color:var(--text-dim);text-decoration:none;position:relative;padding:6px 0;transition:color .2s}
 nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s ease}
@@ -412,9 +415,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 
 <header id="site-header">
   <div class="wrap navbar">
-    <a href="#top" class="brand">
-      <span class="brand-name">César Augusto Souto</span>
-      <span class="brand-tag">Método Os Cinco Pilares</span>
+    <a href="#top" class="brand brand-logo">
+      <img src="{{LOGO_METODO_ISAN}}" alt="Método ISAN">
     </a>
     <nav class="links" id="nav-links">
       <a href="#metodo">O Método</a>
@@ -908,7 +910,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     </div>
     <div class="foot-bottom">
       <span>© 2026 César Augusto Souto. Todos os direitos reservados.</span>
-      <span>Site oficial: cesarsouto.com</span>
+      <span>Site oficial: www.metodoisan.com.br</span>
     </div>
   </div>
 </footer>
