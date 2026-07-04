@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Os Cinco Pilares — César Augusto Souto</title>
+<meta name="description" content="Uma metodologia de cultura familiar. Três livros, cinco pilares, dois diagnósticos gratuitos por IA — para pais e mães da Geração Alfa." />
+<style>
+/* ============ FONTS ============ */
+{{FONT_FACES}}
+
+/* ============ RESET ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+a{color:inherit}
+
+/* ============ TOKENS ============ */
+:root{
+  --ink:#0a1420;
+  --ink-1:#0e1a29;
+  --ink-2:#132335;
+  --ink-3:#182a40;
+  --line:rgba(201,151,63,.22);
+  --line-strong:rgba(201,151,63,.45);
+  --gold:#c9973f;
+  --gold-bright:#e7c581;
+  --gold-dim:#8a7040;
+  --paper:#f2ead7;
+  --text:#eae2d2;
+  --text-dim:#a7b0bf;
+  --text-faint:#6d7789;
+  --father:#6f9dc9;
+  --mother:#cf9468;
+  --shadow-lg:0 30px 80px -30px rgba(0,0,0,.7);
+  --shadow-sm:0 10px 30px -15px rgba(0,0,0,.5);
+  --serif:'Fraunces',Georgia,'Iowan Old Style',serif;
+  --sans:'Public Sans',-apple-system,'Segoe UI',system-ui,sans-serif;
+  --container:1180px;
+  --edge:2px;
+  color-scheme: dark;
+}
+:root[data-theme="light"]{
+  --ink:#f2ead7;
+  --ink-1:#ffffff;
+  --ink-2:#fbf5e7;
+  --ink-3:#f4ecd9;
+  --line:rgba(28,22,10,.14);
+  --line-strong:rgba(28,22,10,.28);
+  --gold:#96661c;
+  --gold-bright:#7a5316;
+  --gold-dim:#b08841;
+  --paper:#12233a;
+  --text:#211c10;
+  --text-dim:#544a34;
+  --text-faint:#8a7f66;
+  --shadow-lg:0 30px 80px -30px rgba(60,45,10,.25);
+  --shadow-sm:0 10px 30px -15px rgba(60,45,10,.2);
+  color-scheme: light;
+}
+
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 28px}
+@media (max-width:640px){.wrap{padding:0 20px}}
+
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;text-wrap:balance;color:var(--text)}
+.eyebrow{
+  font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold-dim)}
+.lede{font-size:1.1rem;color:var(--text-dim);max-width:60ch;line-height:1.7}
+section{position:relative;padding:120px 0}
+@media (max-width:900px){section{padding:84px 0}}
+.section-head{max-width:720px;margin-bottom:56px}
+.hairline{border:none;border-top:1px solid var(--line);margin:0}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 30px;font-size:.92rem;font-weight:600;letter-spacing:.02em;
+  border:1px solid transparent;cursor:pointer;text-decoration:none;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+  white-space:nowrap;
+}
+.btn-gold{background:var(--gold);color:#1a1206;border-color:var(--gold)}
+.btn-gold:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px)}
+.btn-sm{padding:10px 20px;font-size:.82rem}
+.btn svg{width:16px;height:16px;flex:none}
+
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright));width:0%;z-index:200;transition:width .1s linear}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  background:color-mix(in srgb, var(--ink) 82%, transparent);
+  backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, background .3s ease;
+}
+header.scrolled{border-bottom-color:var(--line)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.brand-name{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.02em;color:var(--text)}
+.brand-tag{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+nav.links{display:flex;gap:34px;align-items:center}
+nav.links a{font-size:.86rem;color:var(--text-dim);text-decoration:none;position:relative;padding:6px 0;transition:color .2s}
+nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s ease}
+nav.links a:hover,nav.links a.active{color:var(--text)}
+nav.links a:hover::after,nav.links a.active::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.burger span{width:22px;height:1.5px;background:var(--text);display:block}
+@media (max-width:920px){
+  nav.links{position:fixed;top:78px;left:0;right:0;background:var(--ink-1);flex-direction:column;align-items:flex-start;padding:24px 28px 32px;gap:20px;border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease}
+  nav.links.open{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .burger{display:flex}
+  .nav-cta .btn-sm-desktop{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;position:relative;
+  padding-top:140px;padding-bottom:80px;
+  background:
+    radial-gradient(ellipse 900px 500px at 82% -10%, rgba(201,151,63,.16), transparent 60%),
+    radial-gradient(ellipse 700px 600px at -10% 90%, rgba(111,157,201,.10), transparent 60%),
+    var(--ink);
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{
+  font-size:clamp(2.5rem,5.6vw,4.4rem);line-height:1.04;font-weight:600;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500}
+.hero .sub{margin-top:26px;font-size:1.18rem;color:var(--text-dim);max-width:52ch;line-height:1.65}
+.hero-ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.stat-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:64px;border-top:1px solid var(--line);padding-top:28px}
+.stat{flex:1 1 140px;padding-right:20px}
+.stat b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--gold-bright);font-weight:600}
+.stat span{font-size:.78rem;color:var(--text-faint);letter-spacing:.04em}
+
+.hero-visual{position:relative;height:600px;display:flex;align-items:flex-end;justify-content:center}
+@media (max-width:980px){.hero-visual{height:440px;margin-top:20px}}
+.hero-glow{
+  position:absolute;width:560px;height:560px;left:50%;top:2%;transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(201,151,63,.38) 0%, rgba(201,151,63,.14) 42%, rgba(201,151,63,0) 70%);
+  filter:blur(2px);pointer-events:none;
+  animation:pulseGlow 7s ease-in-out infinite;
+}
+@keyframes pulseGlow{0%,100%{opacity:.85;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+.hero-rings{
+  position:absolute;left:50%;bottom:6%;width:420px;height:420px;transform:translateX(-50%);
+  border:1px solid var(--line-strong);border-radius:50%;pointer-events:none;
+}
+.hero-rings::before{
+  content:"";position:absolute;inset:38px;border:1px solid var(--line);border-radius:50%;
+}
+.hero-boy{
+  position:relative;z-index:2;max-height:600px;width:auto;max-width:104%;object-fit:contain;object-position:bottom;
+  filter:drop-shadow(0 26px 34px rgba(0,0,0,.55)) drop-shadow(0 2px 0 rgba(0,0,0,.2));
+  opacity:0;transform:translateY(34px) scale(.97);
+  animation:boyIn 1.15s cubic-bezier(.16,1,.3,1) .25s forwards, boyFloat 6s ease-in-out 1.4s infinite;
+  will-change:transform;
+}
+@keyframes boyIn{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes boyFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1)}}
+.hero-badge{
+  position:absolute;left:-10px;bottom:14%;z-index:3;max-width:220px;
+  background:color-mix(in srgb, var(--ink-1) 88%, transparent);backdrop-filter:blur(8px);
+  border:1px solid var(--line-strong);padding:16px 18px;box-shadow:var(--shadow-sm);
+  opacity:0;animation:badgeIn .8s cubic-bezier(.16,1,.3,1) 1.1s forwards;
+}
+@keyframes badgeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge strong{display:block;font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--gold-bright);line-height:1.3}
+.hero-badge span{display:block;margin-top:6px;font-size:.72rem;color:var(--text-faint);line-height:1.5}
+@media (max-width:640px){.hero-badge{display:none}}
+@media (max-width:980px){.hero-rings{width:320px;height:320px}}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal-stagger.in > *{opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(1){transition-delay:.02s}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.10s}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.18s}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.26s}
+.reveal-stagger.in > *:nth-child(5){transition-delay:.34s}
+
+/* ============ CAUSA / MANIFESTO ============ */
+.causa{background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.causa-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+@media (max-width:900px){.causa-grid{grid-template-columns:1fr;gap:36px}}
+blockquote.big-quote{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.35;color:var(--text);
+  border-left:2px solid var(--gold);padding-left:28px;
+}
+.causa-body p{color:var(--text-dim);margin-bottom:18px;font-size:1.02rem}
+.causa-body strong{color:var(--gold-bright);font-weight:600}
+.commit-card{background:var(--ink-2);border:1px solid var(--line);padding:32px;margin-top:28px}
+.commit-card h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:700}
+.commit-card ul{list-style:none}
+.commit-card li{display:flex;gap:12px;padding:9px 0;color:var(--text-dim);font-size:.94rem;border-top:1px solid var(--line)}
+.commit-card li:first-child{border-top:none}
+.commit-card li::before{content:"—";color:var(--gold);flex:none}
+
+/* ============ EQUATION ============ */
+.equation{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:44px 0;padding:36px 8px;background:var(--ink-2);border:1px solid var(--line)}
+.eq-node{display:flex;align-items:center;gap:0}
+.eq-pill{
+  font-family:var(--sans);font-weight:600;font-size:.86rem;color:var(--text-faint);
+  padding:10px 18px;border:1px solid var(--line-strong);white-space:nowrap;
+  transition:color .5s ease, border-color .5s ease, background .5s ease;
+}
+.equation.lit .eq-pill{transition-delay:calc(var(--i) * .12s)}
+.equation.lit .eq-pill{color:var(--ink);background:var(--gold);border-color:var(--gold)}
+.eq-arrow{color:var(--gold-dim);padding:0 10px;font-size:1rem;transition:color .5s ease}
+.equation.lit .eq-arrow{transition-delay:calc(var(--i) * .12s);color:var(--gold-bright)}
+@media (max-width:760px){.equation{flex-direction:column;align-items:flex-start;gap:10px}.eq-node{width:100%}.eq-arrow{transform:rotate(90deg);padding:2px 0 2px 18px}}
+
+/* ============ LEIS ============ */
+.leis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:64px}
+@media (max-width:820px){.leis{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.leis{grid-template-columns:1fr}}
+.lei{background:var(--ink);padding:26px 24px}
+.lei .num{font-family:var(--serif);font-style:italic;color:var(--gold-dim);font-size:1.5rem}
+.lei p{margin-top:8px;font-size:.9rem;color:var(--text-dim)}
+
+/* ============ PILARES ============ */
+.pillar-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.pillar-item{border-bottom:1px solid var(--line)}
+.pillar-head{
+  display:flex;align-items:center;gap:24px;width:100%;background:none;border:none;cursor:pointer;
+  padding:26px 4px;text-align:left;
+}
+.pillar-head .pnum{font-family:var(--serif);font-size:1.1rem;color:var(--gold-dim);width:32px;flex:none}
+.pillar-head h3{font-size:1.3rem;font-weight:600;flex:1}
+.pillar-head .pdef{color:var(--text-faint);font-size:.86rem;display:none}
+@media (min-width:760px){.pillar-head .pdef{display:block;flex:1.4}}
+.pillar-head .chev{width:11px;height:11px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);transition:transform .3s ease;flex:none}
+.pillar-item.open .pillar-head .chev{transform:rotate(-135deg)}
+.pillar-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.16,1,.3,1)}
+.pillar-item.open .pillar-body{max-height:340px}
+.pillar-inner{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:0 4px 32px 60px}
+@media (max-width:700px){.pillar-inner{grid-template-columns:1fr;padding-left:4px}}
+.pillar-inner h5{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.pillar-inner p{color:var(--text-dim);font-size:.94rem}
+.pillar-inner .source{margin-top:14px;font-size:.78rem;color:var(--text-faint);font-style:italic}
+
+/* ============ DIAGNOSTIC ============ */
+.diag{background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.diag-panel{background:var(--ink-2);border:1px solid var(--line);box-shadow:var(--shadow-lg)}
+.diag-tabs{display:flex;border-bottom:1px solid var(--line)}
+.diag-tab{flex:1;padding:20px;background:none;border:none;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text-faint);position:relative;transition:color .25s}
+.diag-tab.active{color:var(--text)}
+.diag-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold)}
+.diag-body{padding:44px}
+@media (max-width:640px){.diag-body{padding:28px 22px}}
+.diag-progress{display:flex;gap:8px;margin-bottom:30px}
+.diag-progress i{flex:1;height:3px;background:var(--line-strong);transition:background .3s}
+.diag-progress i.done{background:var(--gold)}
+.diag-q-tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.diag-q{font-family:var(--serif);font-size:1.35rem;font-weight:500;margin-bottom:26px;text-wrap:balance}
+.diag-options{display:flex;flex-direction:column;gap:12px}
+.diag-opt{
+  display:flex;gap:16px;align-items:flex-start;text-align:left;
+  padding:18px 20px;background:var(--ink);border:1px solid var(--line-strong);cursor:pointer;
+  transition:border-color .2s, background .2s;font-size:.92rem;color:var(--text-dim);
+}
+.diag-opt:hover{border-color:var(--gold-dim)}
+.diag-opt .letter{flex:none;width:26px;height:26px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;color:var(--text-faint)}
+.diag-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+.diag-back{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:.85rem}
+.diag-back:disabled{opacity:0}
+.diag-result{display:none}
+.diag-result.show{display:block}
+.diag-result h4{font-family:var(--serif);font-size:1.6rem;margin-bottom:6px}
+.diag-result .lvl{display:inline-block;padding:5px 14px;background:var(--gold);color:#1a1206;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.diag-bars{display:flex;flex-direction:column;gap:14px;margin:26px 0}
+.diag-bar-row{display:flex;align-items:center;gap:14px}
+.diag-bar-row span{width:130px;font-size:.8rem;color:var(--text-dim);flex:none}
+.diag-bar-track{flex:1;height:7px;background:var(--ink);border:1px solid var(--line)}
+.diag-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright));width:0%;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.diag-note{font-size:.85rem;color:var(--text-faint);margin-top:20px}
+
+/* ============ BOOKS ============ */
+.book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media (max-width:940px){.book-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.book-card{background:var(--ink-1);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s}
+.book-card:hover{transform:translateY(-8px);border-color:var(--line-strong)}
+.book-cover{aspect-ratio:5/7.6;overflow:hidden;border-bottom:1px solid var(--line)}
+.book-cover img{width:100%;height:100%;object-fit:cover}
+.book-info{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.book-tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.book-info h3{font-size:1.15rem;line-height:1.3}
+.book-info .aud{font-size:.8rem;color:var(--text-faint)}
+.book-pain{font-family:var(--serif);font-style:italic;color:var(--text-dim);font-size:.94rem;border-left:2px solid var(--line-strong);padding-left:12px}
+.book-cta{margin-top:auto;padding-top:10px}
+.bundle-bar{display:flex;gap:24px;flex-wrap:wrap;margin-top:48px;padding:28px 32px;background:var(--ink-2);border:1px solid var(--line);align-items:center;justify-content:space-between}
+.bundle-item{display:flex;flex-direction:column;gap:2px}
+.bundle-item b{font-family:var(--serif);color:var(--gold-bright);font-size:1.1rem}
+.bundle-item span{font-size:.78rem;color:var(--text-faint)}
+
+/* ============ AUTHOR ============ */
+.author-grid{display:grid;grid-template-columns:.55fr 1fr;gap:64px;align-items:center}
+@media (max-width:860px){.author-grid{grid-template-columns:1fr}}
+.author-mark{width:220px;height:220px;margin:0 auto;position:relative}
+.author-mark svg{width:100%;height:100%}
+.author-name{font-size:1.9rem;margin-top:8px}
+.author-tag{color:var(--gold);font-size:.86rem;letter-spacing:.04em;margin-top:6px;margin-bottom:22px;font-style:italic;font-family:var(--serif)}
+.author-body p{color:var(--text-dim);margin-bottom:16px}
+.author-pullquote{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--text);border-left:2px solid var(--gold);padding-left:20px}
+
+/* ============ SCIENCE ============ */
+.sci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (max-width:820px){.sci-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.sci-grid{grid-template-columns:1fr}}
+.sci-card{background:var(--ink);padding:28px 26px}
+.sci-card b{font-family:var(--serif);color:var(--gold-bright);font-size:1.02rem}
+.sci-card .yr{color:var(--text-faint);font-size:.78rem}
+.sci-card p{margin-top:10px;font-size:.86rem;color:var(--text-dim)}
+
+/* ============ PRICING ============ */
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:980px){.tier-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tier-grid{grid-template-columns:1fr}}
+.tier{background:var(--ink-1);border:1px solid var(--line);padding:30px 26px;display:flex;flex-direction:column;gap:14px;position:relative}
+.tier.hi{border-color:var(--gold-dim);box-shadow:var(--shadow-sm)}
+.tier .badge{position:absolute;top:-11px;left:26px;background:var(--gold);color:#1a1206;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px}
+.tier .tname{font-family:var(--serif);font-size:1.15rem}
+.tier .price{font-family:var(--serif);font-size:1.7rem;color:var(--gold-bright)}
+.tier .price small{font-size:.72rem;color:var(--text-faint);font-family:var(--sans)}
+.tier .who{font-size:.78rem;color:var(--text-faint)}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.tier li{font-size:.84rem;color:var(--text-dim);display:flex;gap:8px}
+.tier li::before{content:"·";color:var(--gold)}
+
+/* ============ B2B ============ */
+.b2b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:900px){.b2b-grid{grid-template-columns:1fr}}
+.b2b-card{border:1px solid var(--line);padding:30px;background:var(--ink-1)}
+.b2b-card h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:8px}
+.b2b-card .price{color:var(--gold);font-size:.86rem;font-weight:600;margin-bottom:14px}
+.b2b-card p{color:var(--text-dim);font-size:.88rem}
+
+/* ============ FAQ ============ */
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:24px 4px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:20px}
+.faq-q span{font-size:1.02rem;font-weight:600;color:var(--text)}
+.faq-q .plus{flex:none;width:16px;height:16px;position:relative}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--gold);top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .plus::before{width:14px;height:1.5px}
+.faq-q .plus::after{width:1.5px;height:14px;transition:transform .3s ease}
+.faq-item.open .plus::after{transform:translate(-50%,-50%) rotate(90deg) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.faq-item.open .faq-a{max-height:220px}
+.faq-a p{padding:0 4px 24px;color:var(--text-dim);font-size:.92rem;max-width:68ch}
+
+/* ============ FINAL CTA ============ */
+.final-cta{background:linear-gradient(180deg,var(--ink-1),var(--ink));text-align:center;position:relative;overflow:hidden}
+.final-cta h2{font-size:clamp(1.9rem,4vw,3rem);max-width:16ch;margin:0 auto}
+.final-cta .lede{margin:20px auto 0;text-align:center}
+.cta-watermark{
+  position:absolute;right:-4%;bottom:-6%;height:130%;width:auto;max-width:none;
+  opacity:.06;filter:grayscale(1) contrast(1.15);mix-blend-mode:luminosity;pointer-events:none;z-index:0;
+}
+:root[data-theme="light"] .cta-watermark{opacity:.05}
+@media (max-width:760px){.cta-watermark{display:none}}
+.final-cta .wrap{position:relative;z-index:1}
+.capture{display:flex;gap:12px;max-width:460px;margin:36px auto 0;flex-wrap:wrap;justify-content:center}
+.capture input{
+  flex:1;min-width:220px;padding:15px 18px;background:var(--ink-2);border:1px solid var(--line-strong);color:var(--text);font-family:var(--sans);font-size:.92rem;
+}
+.capture input:focus{outline:none;border-color:var(--gold)}
+.capture-msg{margin-top:16px;font-size:.86rem;color:var(--gold-bright);min-height:1.2em}
+
+/* ============ FOOTER ============ */
+footer{padding:70px 0 40px;border-top:1px solid var(--line)}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+.foot-brand .brand-name{font-size:1.2rem}
+.foot-brand p{color:var(--text-faint);font-size:.84rem;margin-top:14px;max-width:34ch}
+.foot-col h5{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px}
+.foot-col a{display:block;color:var(--text-dim);font-size:.87rem;text-decoration:none;margin-bottom:10px}
+.foot-col a:hover{color:var(--gold-bright)}
+.foot-bottom{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:var(--text-faint)}
+
+/* ============ THEME TOGGLE ============ */
+.theme-toggle{background:none;border:1px solid var(--line-strong);width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.theme-toggle svg{width:16px;height:16px;stroke:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header id="site-header">
+  <div class="wrap navbar">
+    <a href="#top" class="brand">
+      <span class="brand-name">César Augusto Souto</span>
+      <span class="brand-tag">Método Os Cinco Pilares</span>
+    </a>
+    <nav class="links" id="nav-links">
+      <a href="#metodo">O Método</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#livros">A Trilogia</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#palestras">Palestras</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
+      </button>
+      <a href="https://legado-paterno-diagnostico.onrender.com" target="_blank" rel="noopener" class="btn btn-gold btn-sm btn-sm-desktop">Diagnóstico gratuito</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">UMA METODOLOGIA DE CULTURA FAMILIAR</div>
+      <h1>Toda convivência forma.<br><em>Não escolhemos se influenciamos — escolhemos como.</em></h1>
+      <p class="sub">Três livros. Cinco pilares. Dois diagnósticos gratuitos por inteligência artificial. Um método criado por um pai que aplicou à própria família tudo o que aprendeu construindo empresas — e descobriu que toda casa também tem uma cultura, escolhida ou não.</p>
+      <div class="hero-ctas">
+        <a href="https://legado-paterno-diagnostico.onrender.com" target="_blank" rel="noopener" class="btn btn-gold">Fazer o diagnóstico gratuito
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#metodo" class="btn btn-ghost">Conhecer o método</a>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><b>3</b><span>LIVROS PUBLICADOS</span></div>
+        <div class="stat"><b>5</b><span>PILARES DO MÉTODO</span></div>
+        <div class="stat"><b>4</b><span>LEIS FUNDAMENTAIS</span></div>
+        <div class="stat"><b>2</b><span>DIAGNÓSTICOS POR IA</span></div>
+        <div class="stat"><b>6+</b><span>ESTUDOS CIENTÍFICOS DE BASE</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" id="hero-visual">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-rings" aria-hidden="true"></div>
+      <img class="hero-boy" id="hero-boy" src="{{HERO_BOY}}" alt="Menino de camiseta amarela levantando o polegar, com confiança" loading="eager">
+      <div class="hero-badge">
+        <strong>"Toda convivência forma."</strong>
+        <span>O que ele vai lembrar não são as suas palavras — é a sua presença.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A CAUSA ============ -->
+<section class="causa" id="causa">
+  <div class="wrap">
+    <div class="causa-grid">
+      <div class="reveal">
+        <div class="eyebrow">A DECLARAÇÃO FUNDADORA</div>
+        <blockquote class="big-quote">"Nenhuma criança deveria chegar à vida adulta carregando feridas que poderiam ter sido evitadas pela consciência de quem a educou."</blockquote>
+      </div>
+      <div class="causa-body reveal">
+        <p>Na maioria das famílias, não falta amor. <strong>Falta consciência. Falta intencionalidade. Falta método.</strong> Pela primeira vez na história, pais deixaram de ser a principal fonte de informação dos filhos — hoje disputam influência com algoritmos, redes sociais e um fluxo permanente de estímulos que não dorme, não cansa e não tem valores.</p>
+        <p>Não ensinamos como criar filhos. <strong>Ensinamos como governar o ambiente que os cria.</strong> Nenhum pai ou mãe controla completamente quem um filho se tornará — mas todo pai e toda mãe governam o ambiente dentro do qual esse filho cresce.</p>
+        <div class="commit-card">
+          <h4>Nosso compromisso</h4>
+          <ul>
+            <li>Nunca usaremos culpa como ferramenta educativa</li>
+            <li>Nunca venderemos fórmulas milagrosas</li>
+            <li>Nunca trataremos famílias como projetos perfeitos</li>
+            <li>Nunca prometemos controlar quem um filho se tornará</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTODO ============ -->
+<section id="metodo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">A METODOLOGIA</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Os Cinco Pilares</h2>
+      <p class="lede" style="margin-top:16px">Cinco engrenagens que ativam uma à outra — não cinco assuntos diferentes. Juntas, formam a máquina que constrói a cultura da sua casa.</p>
+    </div>
+
+    <div class="equation" id="equation">
+      <div class="eq-node" style="--i:0"><span class="eq-pill">Interações</span></div>
+      <div class="eq-arrow" style="--i:1">→</div>
+      <div class="eq-node" style="--i:1"><span class="eq-pill">Experiências</span></div>
+      <div class="eq-arrow" style="--i:2">→</div>
+      <div class="eq-node" style="--i:2"><span class="eq-pill">Hábitos</span></div>
+      <div class="eq-arrow" style="--i:3">→</div>
+      <div class="eq-node" style="--i:3"><span class="eq-pill">Cultura</span></div>
+      <div class="eq-arrow" style="--i:4">→</div>
+      <div class="eq-node" style="--i:4"><span class="eq-pill">Caráter</span></div>
+      <div class="eq-arrow" style="--i:5">→</div>
+      <div class="eq-node" style="--i:5"><span class="eq-pill">Legado</span></div>
+    </div>
+
+    <div class="leis reveal-stagger">
+      <div class="lei"><div class="num">I</div><p>Toda interação ensina alguma coisa. A convivência educa, independente da intenção.</p></div>
+      <div class="lei"><div class="num">II</div><p>A influência é maior do que a intenção. O que os filhos vivem supera o que ouvem.</p></div>
+      <div class="lei"><div class="num">III</div><p>A repetição forma mais que o evento. O cotidiano educa mais que momentos únicos.</p></div>
+      <div class="lei"><div class="num">IV</div><p>O relacionamento fortalece a influência. Quanto melhor o vínculo, maior o alcance.</p></div>
+    </div>
+
+    <div class="pillar-list reveal" id="pillar-list">
+      <div class="pillar-item open">
+        <button class="pillar-head">
+          <span class="pnum">01</span>
+          <h3>Presença</h3>
+          <span class="pdef">Estar disponível conscientemente — a tela compete com você, e normalmente vence.</span>
+          <span class="chev"></span>
+        </button>
+        <div class="pillar-body">
+          <div class="pillar-inner">
+            <div>
+              <h5>Como aplicar</h5>
+              <p>Jantar sem celular. Silêncio sem pressa. "Qual foi a melhor parte do seu dia?" — e então ouça de verdade.</p>
+            </div>
+            <div>
+              <h5>Base científica</h5>
+              <p>O vínculo de apego depende da responsividade, não da quantidade de tempo junto.</p>
+              <p class="source">Bowlby (1969) · Beebe &amp; Lachmann (2002)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <button class="pillar-head">
+          <span class="pnum">02</span>
+          <h3>Exemplo</h3>
+          <span class="pdef">Viver aquilo que deseja ensinar — os filhos copiam o que veem, não o que ouvem.</span>
+          <span class="chev"></span>
+        </button>
+        <div class="pillar-body">
+          <div class="pillar-inner">
+            <div>
+              <h5>Como aplicar</h5>
+              <p>Reconheça seus erros em voz alta. Devolva o troco a mais. Cumpra a promessa pequena — o exemplo é 24h, não tem pausa.</p>
+            </div>
+            <div>
+              <h5>Base científica</h5>
+              <p>A aprendizagem social ocorre por observação e modelagem de adultos admirados, não por instrução.</p>
+              <p class="source">Bandura (1977)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <button class="pillar-head">
+          <span class="pnum">03</span>
+          <h3>Relacionamento</h3>
+          <span class="pdef">Construir confiança antes de corrigir — correção sem vínculo é ruído.</span>
+          <span class="chev"></span>
+        </button>
+        <div class="pillar-body">
+          <div class="pillar-inner">
+            <div>
+              <h5>Como aplicar</h5>
+              <p>Pergunte antes de corrigir. Saiba o nome dos amigos dele. Celebre antes de cobrar — conquiste antes de exigir.</p>
+            </div>
+            <div>
+              <h5>Base científica</h5>
+              <p>A "conta bancária emocional": cada interação positiva deposita; cada conflito sem reparo, saca.</p>
+              <p class="source">Gottman (1997)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <button class="pillar-head">
+          <span class="pnum">04</span>
+          <h3>Intencionalidade</h3>
+          <span class="pdef">Transformar rotina em jornada — a cultura da família não nasce por acidente.</span>
+          <span class="chev"></span>
+        </button>
+        <div class="pillar-body">
+          <div class="pillar-inner">
+            <div>
+              <h5>Como aplicar</h5>
+              <p>Antes de agir, pergunte: "Que oportunidade de formação existe aqui?" Use o conflito, o erro e o fracasso como aula.</p>
+            </div>
+            <div>
+              <h5>Base científica</h5>
+              <p>"Começar com o fim em mente" como hábito de alta eficácia, aplicado à formação familiar.</p>
+              <p class="source">Covey (1989)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <button class="pillar-head">
+          <span class="pnum">05</span>
+          <h3>Continuidade</h3>
+          <span class="pdef">Repetir consistentemente o que fortalece — a consistência vale mais que a intensidade.</span>
+          <span class="chev"></span>
+        </button>
+        <div class="pillar-body">
+          <div class="pillar-inner">
+            <div>
+              <h5>Como aplicar</h5>
+              <p>Escolha um hábito por pilar. Pratique por 21 dias sem exceção. Pequenos atos repetidos até virarem identidade.</p>
+            </div>
+            <div>
+              <h5>Base científica</h5>
+              <p>Hábitos formam identidade por loop — gatilho, rotina, recompensa. Grit é paixão mais perseverança.</p>
+              <p class="source">Duhigg (2012) · Duckworth (2016)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNÓSTICO ============ -->
+<section class="diag" id="diagnostico">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">DESCUBRA SEU PERFIL EM 3 MINUTOS</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Você está presente — ou no piloto automático?</h2>
+      <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
+    </div>
+
+    <div class="diag-panel reveal" style="max-width:720px;margin:0 auto">
+      <div class="diag-tabs">
+        <button class="diag-tab active" data-persona="pai">Diagnóstico do Pai</button>
+        <button class="diag-tab" data-persona="mae">Diagnóstico da Mãe</button>
+      </div>
+      <div class="diag-body">
+        <div class="diag-progress" id="diag-progress"></div>
+
+        <div id="diag-question"></div>
+
+        <div class="diag-result" id="diag-result">
+          <div class="lvl" id="diag-lvl">PERFIL</div>
+          <h4 id="diag-title">Seu resultado prévio</h4>
+          <p style="color:var(--text-dim);font-size:.94rem" id="diag-desc"></p>
+          <div class="diag-bars" id="diag-bars"></div>
+          <a href="https://legado-paterno-diagnostico.onrender.com" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:8px">Fazer o diagnóstico completo (9 perguntas)
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <p class="diag-note">Gratuito · leva 3 minutos · você recebe o laudo completo por e-mail, com plano de 7 dias por pilar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRILOGIA ============ -->
+<section id="livros">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">OS TRÊS LIVROS</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Três portas de entrada. Um único método.</h2>
+      <p class="lede" style="margin-top:16px">Os livros não competem entre si — são pontos de entrada diferentes para o mesmo sistema. O pai lê o Livro 1 ou o 2. A mãe lê o Livro 3 ou o 2. O casal lê os três.</p>
+    </div>
+
+    <div class="book-grid reveal-stagger">
+      <div class="book-card">
+        <div class="book-cover"><img src="{{COVER1}}" alt="Capa do livro O Homem que Seu Filho Será, de César Augusto Souto" loading="lazy"></div>
+        <div class="book-info">
+          <div class="book-tag" style="color:var(--father)">Livro 1 · Para pais</div>
+          <h3>O Homem que Seu Filho Será</h3>
+          <div class="aud">Pais, 35–48 anos · filhos de 8 a 16 anos</div>
+          <p class="book-pain">"Estou presente no corpo, mas ausente de verdade."</p>
+          <div class="book-cta"><a href="#contato" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Avise-me no lançamento</a></div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover"><img src="{{COVER2}}" alt="Capa do livro Os Cinco Pilares, de César Augusto Souto" loading="lazy"></div>
+        <div class="book-info">
+          <div class="book-tag">Livro 2 · Para pais e mães</div>
+          <h3>Os Cinco Pilares</h3>
+          <div class="aud">Pais e mães, 30–48 anos · qualquer fase</div>
+          <p class="book-pain">"Quero um sistema, não apenas boas intenções."</p>
+          <div class="book-cta"><a href="#contato" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Avise-me no lançamento</a></div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover"><img src="{{COVER3}}" alt="Capa do livro O Filho que Você Precisa Soltar, de César Augusto Souto" loading="lazy"></div>
+        <div class="book-info">
+          <div class="book-tag" style="color:var(--mother)">Livro 3 · Para mães</div>
+          <h3>O Filho que Você Precisa Soltar</h3>
+          <div class="aud">Mães, 30–48 anos · filhos de 10 a 18 anos</div>
+          <p class="book-pain">"Amo demais do jeito errado — e não sei como mudar sem abandonar."</p>
+          <div class="book-cta"><a href="#contato" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Avise-me no lançamento</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bundle-bar reveal">
+      <div class="bundle-item"><b>Kit Família — R$ 99,90</b><span>Livros 1 + 3, para casais</span></div>
+      <div class="bundle-item"><b>Trilogia Completa — R$ 139,90</b><span>Livros 1 + 2 + 3</span></div>
+      <a href="#contato" class="btn btn-gold btn-sm">Quero garantir meu kit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTOR ============ -->
+<section id="autor" style="background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap author-grid">
+    <div class="reveal" style="text-align:center">
+      <div class="author-mark">
+        <svg viewBox="0 0 220 220">
+          <circle cx="110" cy="110" r="108" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
+          <circle cx="110" cy="110" r="94" fill="none" stroke="var(--gold-dim)" stroke-width="1"/>
+          <text x="110" y="130" text-anchor="middle" font-family="var(--serif)" font-size="64" fill="var(--gold-bright)" font-style="italic">CS</text>
+        </svg>
+      </div>
+      <h3 class="author-name">César Augusto Souto</h3>
+      <div class="author-tag">"O pai que ensina construindo, não explicando."</div>
+    </div>
+    <div class="author-body reveal">
+      <div class="eyebrow">SOBRE O AUTOR</div>
+      <p>César Augusto Souto é empreendedor e construtor de soluções. Ao longo da vida, desenvolveu empresas, processos e produtos — sempre acreditando que sistemas bem construídos produzem resultados consistentes. Essa mesma visão o levou a compreender que a formação de um filho também segue princípios: caráter não nasce por acaso, é construído dia após dia.</p>
+      <p>Não é terapeuta. É pai de Felippe e Henrique, casado com Sabrina Heupa — e traz para um mercado saturado de jargão terapêutico uma linguagem de resultados, sistemas e construção.</p>
+      <blockquote class="author-pullquote">"Você tem uma cultura dentro da sua família. O problema é que talvez nunca a tenha escolhido — ela se formou sozinha, a partir do que você tolerou, do que ignorou e de como se comportou sob pressão."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIÊNCIA ============ -->
+<section id="ciencia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">BASE CIENTÍFICA</div>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem)">Um método construído sobre décadas de pesquisa</h2>
+    </div>
+    <div class="sci-grid reveal-stagger">
+      <div class="sci-card"><b>Bowlby</b> <span class="yr">1969</span><p>O vínculo de apego depende da responsividade dos pais, não da quantidade de tempo junto.</p></div>
+      <div class="sci-card"><b>Bandura</b> <span class="yr">1977</span><p>A aprendizagem social ocorre por observação e modelagem de adultos admirados — não por instrução.</p></div>
+      <div class="sci-card"><b>Gottman</b> <span class="yr">1997</span><p>A "conta bancária emocional": interações positivas depositam, conflitos sem reparo sacam.</p></div>
+      <div class="sci-card"><b>Covey</b> <span class="yr">1989</span><p>"Começar com o fim em mente" como hábito de alta eficácia, aplicado à formação familiar.</p></div>
+      <div class="sci-card"><b>Duhigg</b> <span class="yr">2012</span><p>Hábitos formam identidade através de um loop: gatilho, rotina, recompensa.</p></div>
+      <div class="sci-card"><b>Duckworth</b> <span class="yr">2016</span><p>Grit — paixão somada à perseverança — como preditor de formação de caráter no longo prazo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMUNIDADE ============ -->
+<section id="comunidade" style="background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">DEPOIS DO DIAGNÓSTICO</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Sua jornada continua onde o laudo termina</h2>
+      <p class="lede" style="margin-top:16px">Cada perfil de resultado tem um próximo passo recomendado — do grupo gratuito à mentoria individual.</p>
+    </div>
+    <div class="tier-grid reveal-stagger">
+      <div class="tier">
+        <div class="tname">Gratuito</div>
+        <div class="price">R$ 0</div>
+        <div class="who">Grupos "Pais que Constroem" / "Mães que Soltam"</div>
+        <ul><li>Comunidade aberta no WhatsApp</li><li>Conteúdo semanal por pilar</li><li>Acesso ao diagnóstico</li></ul>
+      </div>
+      <div class="tier hi">
+        <div class="badge">Recomendado score 0–12</div>
+        <div class="tname">Essencial</div>
+        <div class="price">R$ 47<small>/mês</small></div>
+        <div class="who">Perfil Iniciante e Em Construção</div>
+        <ul><li>1 sessão ao vivo por mês</li><li>Grupo fechado por público</li><li>Trilhas guiadas por pilar</li></ul>
+      </div>
+      <div class="tier">
+        <div class="tname">Master</div>
+        <div class="price">R$ 97<small>/mês</small></div>
+        <div class="who">Perfil Em Construção e Avançado</div>
+        <ul><li>Tudo do Essencial</li><li>Mentorias em grupo</li><li>Acesso ao curso Os Cinco Pilares</li></ul>
+      </div>
+      <div class="tier">
+        <div class="tname">VIP Construtor</div>
+        <div class="price">R$ 497<small>/mês</small></div>
+        <div class="who">Convite direto do laudo — score 13–18</div>
+        <ul><li>Tudo do Master</li><li>Sessão individual semestral</li><li>Mastermind fechado</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B2B ============ -->
+<section id="palestras">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">PARA EMPRESAS, ESCOLAS E IGREJAS</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Palestras, workshops e diagnóstico coletivo</h2>
+      <p class="lede" style="margin-top:16px">O diagnóstico transforma a proposta institucional: em vez de "venha ouvir uma palestra sobre família", o convite é "veja o dado — e veja como ele se aplica à sua equipe."</p>
+    </div>
+    <div class="b2b-grid reveal-stagger">
+      <div class="b2b-card">
+        <h4>Palestra "Os Cinco Pilares"</h4>
+        <div class="price">60–90 min · R$ 8.000 – R$ 15.000</div>
+        <p>Para empresas e conferências. Apresentação do método completo, com aplicação prática dos cinco pilares.</p>
+      </div>
+      <div class="b2b-card">
+        <h4>Workshop "Diagnóstico ao Vivo"</h4>
+        <div class="price">3 horas · R$ 15.000 – R$ 25.000</div>
+        <p>Todos os participantes respondem ao diagnóstico durante o evento. César apresenta os resultados coletivos ao vivo.</p>
+      </div>
+      <div class="b2b-card">
+        <h4>Programa Corporativo Completo</h4>
+        <div class="price">1 dia · R$ 30.000 – R$ 50.000</div>
+        <p>Diagnóstico + workshop + kit de livros + 30 dias de acesso à comunidade para todos os colaboradores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="max-width:820px">
+    <div class="section-head reveal">
+      <div class="eyebrow">PERGUNTAS FREQUENTES</div>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem)">Antes de começar</h2>
+    </div>
+    <div class="reveal" id="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q"><span>Preciso ser terapeuta ou especialista para aplicar o método?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Não. O método usa linguagem de sistemas e construção, não jargão clínico — foi desenhado para pais e mães comuns aplicarem no dia a dia, sem depender de conhecimento técnico prévio.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>O diagnóstico é realmente gratuito?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Sim. As 9 perguntas e o laudo personalizado por e-mail são gratuitos. O livro recomendado ao final é opcional.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Funciona para filhos de qualquer idade?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>O método se aplica à convivência cotidiana em qualquer fase. Os exemplos dos livros cobrem principalmente crianças e adolescentes de 8 a 18 anos.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Preciso comprar os três livros?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Não. Cada livro é uma porta de entrada diferente para o mesmo método. O diagnóstico recomenda qual livro combina com o seu perfil.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Em que o método é baseado?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Em observação prática de mais de uma década e em literatura científica sobre apego, aprendizagem social e formação de hábitos — Bowlby, Bandura, Gottman, Covey, Duhigg e Duckworth, entre outros.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Como funciona a Comunidade?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Depois do diagnóstico, você recebe uma recomendação de tier com base no seu score — do grupo gratuito no WhatsApp até mentoria individual, conforme sua fase na jornada.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contato">
+  <img class="cta-watermark" src="{{HERO_BOY}}" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px;margin:0 auto">
+      <div class="eyebrow" style="justify-content:center">COMECE HOJE</div>
+      <h2>O primeiro passo não é comprar um livro. É fazer o diagnóstico.</h2>
+      <p class="lede">Deixe seu e-mail para receber novidades da trilogia, o convite para a comunidade gratuita e o link direto do diagnóstico.</p>
+      <form class="capture" id="capture-form">
+        <input type="email" placeholder="seu@email.com" required id="capture-email">
+        <button type="submit" class="btn btn-gold">Quero receber</button>
+      </form>
+      <div class="capture-msg" id="capture-msg"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name">César Augusto Souto</span>
+        <p>Metodologia de cultura familiar para pais e mães da Geração Alfa. Três livros, cinco pilares, uma causa: nenhuma criança deveria carregar feridas que a consciência de quem a educou poderia ter evitado.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Método</h5>
+        <a href="#metodo">Os Cinco Pilares</a>
+        <a href="#causa">A Declaração Fundadora</a>
+        <a href="#ciencia">Base científica</a>
+      </div>
+      <div class="foot-col">
+        <h5>Conteúdo</h5>
+        <a href="#livros">A Trilogia</a>
+        <a href="#diagnostico">Diagnóstico gratuito</a>
+        <a href="#comunidade">Comunidade</a>
+      </div>
+      <div class="foot-col">
+        <h5>Institucional</h5>
+        <a href="#palestras">Palestras &amp; empresas</a>
+        <a href="#autor">Sobre o autor</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 César Augusto Souto. Todos os direitos reservados.</span>
+      <span>Site oficial: cesarsouto.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- scroll progress + header state ----
+  var header = document.getElementById('site-header');
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max>0 ? (scrolled/max*100) : 0) + '%';
+    header.classList.toggle('scrolled', scrolled > 8);
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- mobile nav ----
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('nav-links');
+  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+  // ---- active nav link on scroll ----
+  var sections = ['metodo','diagnostico','livros','comunidade','palestras','faq'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var navA = navLinks.querySelectorAll('a');
+  var navObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        navA.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id); });
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(function(s){ navObs.observe(s); });
+
+  // ---- theme toggle ----
+  var themeBtn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+  themeBtn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  });
+
+  // ---- hero photo parallax (applied to the wrapper, so it doesn't fight the photo's own entrance/float animation) ----
+  var heroVisual = document.getElementById('hero-visual');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(heroVisual && !reduceMotion){
+    var ticking = false;
+    document.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = Math.min(window.scrollY, 900);
+        heroVisual.style.transform = 'translateY(' + (y * 0.07) + 'px)';
+        ticking = false;
+      });
+    }, {passive:true});
+  }
+
+  // ---- reveal on scroll ----
+  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  revealEls.forEach(function(el){ revObs.observe(el); });
+
+  // ---- equation animation ----
+  var eq = document.getElementById('equation');
+  var eqObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ eq.classList.add('lit'); eqObs.unobserve(eq); } });
+  }, {threshold:.4});
+  eqObs.observe(eq);
+
+  // ---- pillars accordion ----
+  document.querySelectorAll('.pillar-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.pillar-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.pillar-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ---- faq accordion ----
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ---- diagnostic quiz ----
+  var QUESTIONS = {
+    pai: [
+      { tag:'Pilar 1 — Presença', q:'Quando você chega em casa após um dia longo de trabalho, qual é a sua primeira reação em relação aos seus filhos?',
+        opts:[
+          {l:'A', t:'Cumprimento rapidamente e busco isolamento, celular ou TV, adiando o contato real.'},
+          {l:'B', t:'Estou fisicamente no ambiente, mas divido a atenção entre eles e o telefone.'},
+          {l:'C', t:'Pratico a desconexão intencional: guardo o celular e estou genuinamente disponível.'}
+        ]},
+      { tag:'Pilar 3 — Relacionamento', q:'Quando seu filho compartilha um erro grave ou uma nota baixa, qual é o seu primeiro instinto?',
+        opts:[
+          {l:'A', t:'Correção imediata e dura — tom de voz elevado, castigo ou sermão.'},
+          {l:'B', t:'Fico desapontado e uso o afastamento emocional ou o silêncio.'},
+          {l:'C', t:'Conexão antes da correção: entendo o que aconteceu antes de alinhar a consequência.'}
+        ]},
+      { tag:'Pilar 5 — Continuidade', q:'Pensando no legado intangível, o que você sente que está transferindo para a próxima geração?',
+        opts:[
+          {l:'A', t:'Apenas provisão material — a parte emocional ficou em segundo plano.'},
+          {l:'B', t:'Uma mistura de boas intenções com memórias de um pai sempre cansado ou preocupado.'},
+          {l:'C', t:'Uma herança de identidade clara e a certeza de que foram amados e vistos por mim.'}
+        ]}
+    ],
+    mae: [
+      { tag:'Pilar 1 — Presença', q:'Ao longo do dia, qual é o seu comportamento em relação ao celular e ao paradeiro do seu filho?',
+        opts:[
+          {l:'A', t:'Verifico várias vezes ao dia. Se ele demora a responder, sinto uma ansiedade física.'},
+          {l:'B', t:'Me policio para não sufocar, mas testo a proximidade com perguntas indiretas.'},
+          {l:'C', t:'Consigo focar nas minhas coisas sabendo que estou disponível se ele precisar.'}
+        ]},
+      { tag:'Pilar 3 — Relacionamento', q:'Como o estado emocional do seu filho afeta o seu próprio dia?',
+        opts:[
+          {l:'A', t:'Ele é o meu barômetro emocional — se está triste, eu não durmo até resolver.'},
+          {l:'B', t:'Tento me blindar, mas ele nota minha angústia e tenta esconder as frustrações.'},
+          {l:'C', t:'Consigo acolher o sofrimento dele sem me tornar o sofrimento dele.'}
+        ]},
+      { tag:'Pilar 5 — Continuidade', q:'Quando seu filho assume uma nova independência, como você lida com o processo de "soltar"?',
+        opts:[
+          {l:'A', t:'Sinto que soltar é abandono ou perda. Fico paralisada pela falta de controle.'},
+          {l:'B', t:'Deixo ele ir porque sei que é certo, mas passo os dias colada ao telefone.'},
+          {l:'C', t:'Solto com confiança — uso o tempo livre para viver a minha própria vida.'}
+        ]}
+    ]
+  };
+
+  var persona = 'pai';
+  var qIndex = 0;
+  var answers = [];
+  var tabs = document.querySelectorAll('.diag-tab');
+  var progWrap = document.getElementById('diag-progress');
+  var qWrap = document.getElementById('diag-question');
+  var resultWrap = document.getElementById('diag-result');
+
+  function buildProgress(){
+    progWrap.innerHTML = '';
+    QUESTIONS[persona].forEach(function(_, i){
+      var i_ = document.createElement('i');
+      if(i < qIndex) i_.classList.add('done');
+      progWrap.appendChild(i_);
+    });
+  }
+
+  function renderQuestion(){
+    resultWrap.classList.remove('show');
+    qWrap.style.display = 'block';
+    buildProgress();
+    var item = QUESTIONS[persona][qIndex];
+    var html = '<div class="diag-q-tag">'+item.tag+' · Pergunta '+(qIndex+1)+' de '+QUESTIONS[persona].length+'</div>';
+    html += '<div class="diag-q">'+item.q+'</div>';
+    html += '<div class="diag-options">';
+    item.opts.forEach(function(o){
+      html += '<button class="diag-opt" data-letter="'+o.l+'"><span class="letter">'+o.l+'</span><span>'+o.t+'</span></button>';
+    });
+    html += '</div>';
+    html += '<div class="diag-actions"><button class="diag-back" id="diag-back" '+(qIndex===0?'disabled':'')+'>← Voltar</button><span></span></div>';
+    qWrap.innerHTML = html;
+
+    qWrap.querySelectorAll('.diag-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        answers[qIndex] = btn.getAttribute('data-letter');
+        qIndex++;
+        if(qIndex < QUESTIONS[persona].length){ renderQuestion(); }
+        else { showResult(); }
+      });
+    });
+    var back = document.getElementById('diag-back');
+    if(back) back.addEventListener('click', function(){ if(qIndex>0){ qIndex--; renderQuestion(); } });
+  }
+
+  function showResult(){
+    qWrap.style.display = 'none';
+    buildProgress();
+    var score = answers.reduce(function(sum,l){ return sum + (l==='A'?0:l==='B'?1:2); }, 0);
+    var max = QUESTIONS[persona].length*2;
+    var level, desc;
+    if(score <= max*0.33){ level='PERFIL INICIANTE'; desc='Sua convivência ainda é guiada mais por reação do que por método. É exatamente daqui que todo processo de construção começa.'; }
+    else if(score <= max*0.66){ level='PERFIL EM CONSTRUÇÃO'; desc='A consciência já está presente — falta consistência e sistema. Você já sabe o que precisa mudar.'; }
+    else { level='PERFIL AVANÇADO'; desc='Você já pratica bem os pilares avaliados. O próximo passo é estrutura para sustentar e transmitir isso.'; }
+    document.getElementById('diag-lvl').textContent = level;
+    document.getElementById('diag-title').textContent = 'Prévia do seu resultado: '+score+'/'+max;
+    document.getElementById('diag-desc').textContent = desc;
+
+    var barsHtml = '';
+    QUESTIONS[persona].forEach(function(item, i){
+      var v = answers[i]==='A'?20:answers[i]==='B'?60:100;
+      var label = item.tag.split('—')[1].trim();
+      barsHtml += '<div class="diag-bar-row"><span>'+label+'</span><div class="diag-bar-track"><div class="diag-bar-fill" data-w="'+v+'"></div></div></div>';
+    });
+    document.getElementById('diag-bars').innerHTML = barsHtml;
+    resultWrap.classList.add('show');
+    requestAnimationFrame(function(){
+      resultWrap.querySelectorAll('.diag-bar-fill').forEach(function(el){ el.style.width = el.getAttribute('data-w')+'%'; });
+    });
+  }
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      persona = tab.getAttribute('data-persona');
+      qIndex = 0; answers = [];
+      renderQuestion();
+    });
+  });
+
+  renderQuestion();
+
+  // ---- newsletter capture (simulated, no backend in this preview) ----
+  var form = document.getElementById('capture-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('capture-email').value;
+    document.getElementById('capture-msg').textContent = 'Recebido! Em breve você receberá novidades da trilogia em ' + email + '.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
