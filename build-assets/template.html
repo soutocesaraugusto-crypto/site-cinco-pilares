@@ -370,6 +370,8 @@ blockquote.big-quote{
 @media (max-width:860px){.author-grid{grid-template-columns:1fr}}
 .author-mark{width:220px;height:220px;margin:0 auto;position:relative}
 .author-mark svg{width:100%;height:100%}
+.author-mark img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;position:relative;z-index:1}
+.author-mark::after{content:"";position:absolute;inset:16px;border-radius:50%;border:1px solid var(--gold-dim);pointer-events:none;z-index:2}
 .author-name{font-size:1.9rem;margin-top:8px}
 .author-tag{color:var(--gold);font-size:.86rem;letter-spacing:.04em;margin-top:6px;margin-bottom:22px;font-style:italic;font-family:var(--serif)}
 .author-body p{color:var(--text-dim);margin-bottom:16px}
@@ -890,11 +892,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   <div class="wrap author-grid">
     <div class="reveal" style="text-align:center">
       <div class="author-mark">
-        <svg viewBox="0 0 220 220">
-          <circle cx="110" cy="110" r="108" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
-          <circle cx="110" cy="110" r="94" fill="none" stroke="var(--gold-dim)" stroke-width="1"/>
-          <text x="110" y="130" text-anchor="middle" font-family="var(--serif)" font-size="64" fill="var(--gold-bright)" font-style="italic">CS</text>
-        </svg>
+        <img src="{{AUTOR}}" alt="César Augusto Souto" loading="lazy">
       </div>
       <h3 class="author-name">César Augusto Souto</h3>
       <div class="author-tag">"O pai que ensina construindo, não explicando."</div>
@@ -902,7 +900,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     <div class="author-body reveal">
       <div class="eyebrow">SOBRE O AUTOR</div>
       <p>César Augusto Souto é empreendedor e construtor de soluções. Ao longo da vida, desenvolveu empresas, processos e produtos — sempre acreditando que sistemas bem construídos produzem resultados consistentes. Essa mesma visão o levou a compreender que a formação de um filho também segue princípios: caráter não nasce por acaso, é construído dia após dia.</p>
-      <p>Não é terapeuta. É pai de Felippe e Henrique, casado com Sabrina Heupa — e traz para um mercado saturado de jargão terapêutico uma linguagem de resultados, sistemas e construção.</p>
+      <p>Não é terapeuta. É pai de Felippe e Henrique, avô de Zion, Zac e Matteo, casado com Sabrina Heupa — e traz para um mercado saturado de jargão terapêutico uma linguagem de resultados, sistemas e construção.</p>
       <blockquote class="author-pullquote">"Você tem uma cultura dentro da sua família. O problema é que talvez nunca a tenha escolhido — ela se formou sozinha, a partir do que você tolerou, do que ignorou e de como se comportou sob pressão."</blockquote>
     </div>
   </div>
