@@ -269,6 +269,14 @@ blockquote.big-quote{
 
 /* ============ DIAGNOSTIC ============ */
 .diag{background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.video-embed{position:relative;max-width:720px;margin:0 auto 44px;aspect-ratio:16/9;background:var(--ink-2);border:1px solid var(--line);box-shadow:var(--shadow-lg);overflow:hidden;cursor:pointer}
+.video-embed img{width:100%;height:100%;object-fit:cover;display:block;opacity:.72;transition:opacity .3s}
+.video-embed:hover img{opacity:.9}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s}
+.video-embed:hover .video-play{transform:translate(-50%,-50%) scale(1.08);background:var(--gold-bright)}
+.video-play svg{width:26px;height:26px;fill:#1a1206;margin-left:4px}
+.video-caption{text-align:center;font-size:.85rem;color:var(--text-faint);margin:-30px auto 40px;max-width:720px}
 .diag-panel{background:var(--ink-2);border:1px solid var(--line);box-shadow:var(--shadow-lg)}
 .diag-tabs{display:flex;border-bottom:1px solid var(--line)}
 .diag-tab{flex:1;padding:20px;background:none;border:none;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text-faint);position:relative;transition:color .25s}
@@ -813,6 +821,12 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
     </div>
 
+    <div class="video-embed reveal" id="video-diag" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
+      <img src="https://i.ytimg.com/vi/YS6JDnipTMk/hqdefault.jpg" alt="Vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho" loading="lazy">
+      <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+    </div>
+    <p class="video-caption">Diagnóstico grátis na hora para conexão entre mãe e filho</p>
+
     <div class="diag-panel reveal" style="max-width:720px;margin:0 auto">
       <div class="diag-tabs">
         <button class="diag-tab active" data-persona="pai">Diagnóstico do Pai</button>
@@ -1340,6 +1354,19 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     document.getElementById('capture-msg').textContent = 'Recebido! Em breve você receberá novidades da trilogia em ' + email + '.';
     form.reset();
   });
+
+  // ---- vídeo do diagnóstico (facade: só carrega o iframe do YouTube ao clicar) ----
+  var videoEmbed = document.getElementById('video-diag');
+  if(videoEmbed){
+    var playVideo = function(){
+      var id = videoEmbed.getAttribute('data-yt');
+      videoEmbed.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1" title="Vídeo do Método ISAN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    };
+    videoEmbed.addEventListener('click', playVideo);
+    videoEmbed.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); playVideo(); }
+    });
+  }
 })();
 </script>
 </body>
