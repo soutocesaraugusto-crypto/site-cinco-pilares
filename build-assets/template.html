@@ -279,8 +279,9 @@ blockquote.big-quote{
   .diag-intro .video-caption{text-align:center}
 }
 .video-embed{position:relative;max-width:720px;margin:0 auto 44px;aspect-ratio:16/9;background:var(--ink-2);border:1px solid var(--line);box-shadow:var(--shadow-lg);overflow:hidden;cursor:pointer}
-.video-embed img{width:100%;height:100%;object-fit:cover;display:block;opacity:.72;transition:opacity .3s}
-.video-embed:hover img{opacity:.9}
+.video-embed img,.video-embed video{width:100%;height:100%;object-fit:cover;display:block;opacity:.72;transition:opacity .3s;background:#000}
+.video-embed:hover img,.video-embed:hover video{opacity:.9}
+.video-embed video::-webkit-media-controls-start-playback-button{display:none}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s}
 .video-embed:hover .video-play{transform:translate(-50%,-50%) scale(1.08);background:var(--gold-bright)}
@@ -523,8 +524,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     </div>
     <div class="hero-visual" id="hero-visual">
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="video-embed" data-yt="ZoFKhZwCFH8" role="button" tabindex="0" aria-label="Assistir ao vídeo: O seu filho aguarda todos os dias os seus ensinamentos">
-        <img src="https://i.ytimg.com/vi/ZoFKhZwCFH8/hqdefault.jpg" alt="Vídeo: O seu filho aguarda todos os dias os seus ensinamentos" loading="eager">
+      <div class="video-embed" data-mp4="videos/hero-menino.mp4" role="button" tabindex="0" aria-label="Assistir ao vídeo: O seu filho aguarda todos os dias os seus ensinamentos">
+        <video preload="metadata" playsinline><source src="videos/hero-menino.mp4#t=0.1" type="video/mp4"></video>
         <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
       </div>
       <div class="hero-badge">
@@ -821,8 +822,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
       </div>
       <div>
-        <div class="video-embed reveal" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
-          <img src="https://i.ytimg.com/vi/YS6JDnipTMk/hqdefault.jpg" alt="Vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho" loading="lazy">
+        <div class="video-embed reveal" data-mp4="videos/diagnostico-convite.mp4" role="button" tabindex="0" aria-label="Assistir ao vídeo: convite para o diagnóstico gratuito">
+          <video preload="metadata" playsinline><source src="videos/diagnostico-convite.mp4#t=0.1" type="video/mp4"></video>
           <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
         <p class="video-caption">Diagnóstico grátis na hora para conexão entre mãe e filho</p>
@@ -1376,15 +1377,28 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     form.reset();
   });
 
-  // ---- vídeos do YouTube (abre no YouTube em nova aba) ----
-  // A incorporação inline (iframe) depende do YouTube liberar o embed vídeo a
-  // vídeo, o que se mostrou inconsistente (funcionava e depois voltava a
-  // bloquear com "Erro 153"/"Faça login" sem nenhuma mudança de configuração
-  // nosso lado). Abrir em nova aba nunca falha para quem visita o site.
+  // ---- vídeos: mp4 hospedado direto toca inline; YouTube (legado) abre em nova aba ----
+  // A incorporação inline via iframe do YouTube se mostrou inconsistente (funcionava
+  // e depois voltava a bloquear com "Erro 153"/"Faça login" sem nenhuma mudança de
+  // configuração nosso lado) — por isso os vídeos passaram a ser hospedados direto
+  // no repositório do site (pasta /videos) e tocam com <video> nativo.
   document.querySelectorAll('.video-embed').forEach(function(videoEmbed){
+    var started = false;
     var playVideo = function(){
-      var id = videoEmbed.getAttribute('data-yt');
-      window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
+      if(started) return;
+      var yt = videoEmbed.getAttribute('data-yt');
+      var mp4 = videoEmbed.getAttribute('data-mp4');
+      if(mp4){
+        started = true;
+        var video = videoEmbed.querySelector('video');
+        var playBtn = videoEmbed.querySelector('.video-play');
+        if(playBtn) playBtn.style.display = 'none';
+        video.style.opacity = '1';
+        video.setAttribute('controls', '');
+        video.play();
+      } else if(yt){
+        window.open('https://www.youtube.com/watch?v=' + yt, '_blank', 'noopener');
+      }
     };
     videoEmbed.addEventListener('click', playVideo);
     videoEmbed.addEventListener('keydown', function(e){
