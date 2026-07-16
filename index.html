@@ -273,6 +273,14 @@ blockquote.big-quote{
 
 /* ============ DIAGNOSTIC ============ */
 .diag{background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.diag-intro{display:grid;grid-template-columns:1.3fr .82fr;gap:44px;align-items:center;margin-bottom:48px}
+.diag-intro .section-head{margin-bottom:0;max-width:none}
+.diag-intro .video-embed{max-width:none;margin:0 0 10px}
+.diag-intro .video-caption{margin:0;max-width:none;text-align:left}
+@media (max-width:860px){
+  .diag-intro{grid-template-columns:1fr;gap:24px}
+  .diag-intro .video-caption{text-align:center}
+}
 .video-embed{position:relative;max-width:720px;margin:0 auto 44px;aspect-ratio:16/9;background:var(--ink-2);border:1px solid var(--line);box-shadow:var(--shadow-lg);overflow:hidden;cursor:pointer}
 .video-embed img{width:100%;height:100%;object-fit:cover;display:block;opacity:.72;transition:opacity .3s}
 .video-embed:hover img{opacity:.9}
@@ -809,17 +817,20 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 <!-- ============ DIAGNÓSTICO ============ -->
 <section class="diag" id="diagnostico">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">DESCUBRA SEU PERFIL EM 3 MINUTOS</div>
-      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Você está presente — ou no piloto automático?</h2>
-      <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
+    <div class="diag-intro">
+      <div class="section-head reveal">
+        <div class="eyebrow">DESCUBRA SEU PERFIL EM 3 MINUTOS</div>
+        <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Você está presente — ou no piloto automático?</h2>
+        <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
+      </div>
+      <div>
+        <div class="video-embed reveal" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
+          <img src="https://i.ytimg.com/vi/YS6JDnipTMk/hqdefault.jpg" alt="Vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho" loading="lazy">
+          <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <p class="video-caption">Diagnóstico grátis na hora para conexão entre mãe e filho</p>
+      </div>
     </div>
-
-    <div class="video-embed reveal" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
-      <img src="https://i.ytimg.com/vi/YS6JDnipTMk/hqdefault.jpg" alt="Vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho" loading="lazy">
-      <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-    </div>
-    <p class="video-caption">Diagnóstico grátis na hora para conexão entre mãe e filho</p>
 
     <div class="diag-panel reveal" style="max-width:720px;margin:0 auto">
       <div class="diag-tabs">
