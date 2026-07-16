@@ -158,33 +158,23 @@ nav.links a:hover::after,nav.links a.active::after{width:100%}
 .stat b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--gold-bright);font-weight:600}
 .stat span{font-size:.78rem;color:var(--text-faint);letter-spacing:.04em}
 
-.hero-visual{position:relative;height:600px;display:flex;align-items:flex-end;justify-content:center;min-width:0}
-@media (max-width:980px){.hero-visual{height:440px;margin-top:20px}}
+.hero-visual{position:relative;min-width:0}
+@media (max-width:980px){.hero-visual{margin-top:20px}}
 .hero-glow{
-  position:absolute;width:560px;height:560px;left:50%;top:2%;transform:translateX(-50%);
+  position:absolute;width:560px;height:560px;left:50%;top:-90px;transform:translateX(-50%);
   background:radial-gradient(circle, rgba(201,151,63,.38) 0%, rgba(201,151,63,.14) 42%, rgba(201,151,63,0) 70%);
   filter:blur(2px);pointer-events:none;
   animation:pulseGlow 7s ease-in-out infinite;
 }
 @keyframes pulseGlow{0%,100%{opacity:.85;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
-.hero-rings{
-  position:absolute;left:50%;bottom:6%;width:420px;height:420px;transform:translateX(-50%);
-  border:1px solid var(--line-strong);border-radius:50%;pointer-events:none;
+.hero-visual .video-embed{
+  position:relative;z-index:2;margin:0 0 24px;
+  opacity:0;transform:translateY(28px);
+  animation:boyIn 1.1s cubic-bezier(.16,1,.3,1) .25s forwards;
 }
-.hero-rings::before{
-  content:"";position:absolute;inset:38px;border:1px solid var(--line);border-radius:50%;
-}
-.hero-boy{
-  position:relative;z-index:2;max-height:600px;width:auto;max-width:104%;object-fit:contain;object-position:bottom;
-  filter:drop-shadow(0 26px 34px rgba(0,0,0,.55)) drop-shadow(0 2px 0 rgba(0,0,0,.2));
-  opacity:0;transform:translateY(34px) scale(.97);
-  animation:boyIn 1.15s cubic-bezier(.16,1,.3,1) .25s forwards, boyFloat 6s ease-in-out 1.4s infinite;
-  will-change:transform;
-}
-@keyframes boyIn{to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes boyFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1)}}
+@keyframes boyIn{to{opacity:1;transform:translateY(0)}}
 .hero-badge{
-  position:absolute;left:-10px;bottom:14%;z-index:3;max-width:220px;
+  position:relative;z-index:3;max-width:340px;
   background:color-mix(in srgb, var(--ink-1) 88%, transparent);backdrop-filter:blur(8px);
   border:1px solid var(--line-strong);padding:16px 18px;box-shadow:var(--shadow-sm);
   opacity:0;animation:badgeIn .8s cubic-bezier(.16,1,.3,1) 1.1s forwards;
@@ -192,8 +182,6 @@ nav.links a:hover::after,nav.links a.active::after{width:100%}
 @keyframes badgeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .hero-badge strong{display:block;font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--gold-bright);line-height:1.3}
 .hero-badge span{display:block;margin-top:6px;font-size:.72rem;color:var(--text-faint);line-height:1.5}
-@media (max-width:640px){.hero-badge{display:none}}
-@media (max-width:980px){.hero-rings{width:320px;height:320px}}
 
 /* ============ REVEAL ============ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)}
@@ -519,8 +507,10 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     </div>
     <div class="hero-visual" id="hero-visual">
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-rings" aria-hidden="true"></div>
-      <img class="hero-boy" id="hero-boy" src="{{HERO_BOY}}" alt="Menino de camiseta amarela levantando o polegar, com confiança" loading="eager">
+      <div class="video-embed" data-yt="ZoFKhZwCFH8" role="button" tabindex="0" aria-label="Assistir ao vídeo: O seu filho aguarda todos os dias os seus ensinamentos">
+        <img src="https://i.ytimg.com/vi/ZoFKhZwCFH8/hqdefault.jpg" alt="Vídeo: O seu filho aguarda todos os dias os seus ensinamentos" loading="eager">
+        <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </div>
       <div class="hero-badge">
         <strong>"Toda convivência forma."</strong>
         <span>O que ele vai lembrar não são as suas palavras — é a sua presença.</span>
@@ -821,7 +811,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <p class="lede" style="margin-top:16px">Uma prévia de 3 perguntas. O diagnóstico completo tem 9 perguntas, cobre os 5 pilares e gera um laudo personalizado por e-mail, gratuito.</p>
     </div>
 
-    <div class="video-embed reveal" id="video-diag" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
+    <div class="video-embed reveal" data-yt="YS6JDnipTMk" role="button" tabindex="0" aria-label="Assistir ao vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho">
       <img src="https://i.ytimg.com/vi/YS6JDnipTMk/hqdefault.jpg" alt="Vídeo: Diagnóstico grátis na hora para conexão entre mãe e filho" loading="lazy">
       <span class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
     </div>
@@ -1355,9 +1345,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     form.reset();
   });
 
-  // ---- vídeo do diagnóstico (facade: só carrega o iframe do YouTube ao clicar) ----
-  var videoEmbed = document.getElementById('video-diag');
-  if(videoEmbed){
+  // ---- vídeos do YouTube (facade: só carrega o iframe ao clicar) ----
+  document.querySelectorAll('.video-embed').forEach(function(videoEmbed){
     var playVideo = function(){
       var id = videoEmbed.getAttribute('data-yt');
       videoEmbed.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1" title="Vídeo do Método ISAN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
@@ -1366,7 +1355,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     videoEmbed.addEventListener('keydown', function(e){
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); playVideo(); }
     });
-  }
+  });
 })();
 </script>
 </body>
