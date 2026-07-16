@@ -334,9 +334,8 @@ blockquote.big-quote{
 .compare-no li::before{content:"✕";color:var(--text-faint)}
 
 /* ============ RESOURCES HUB ============ */
-.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-@media (max-width:980px){.res-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.res-grid{grid-template-columns:1fr}}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:820px){.res-grid{grid-template-columns:1fr}}
 .res-card{display:flex;flex-direction:column;gap:10px;padding:32px 26px;background:var(--ink-1);border:1px solid var(--line);text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .3s}
 .res-card:hover{transform:translateY(-6px);border-color:var(--gold-dim)}
 .res-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-strong);color:var(--gold);flex:none}
@@ -386,30 +385,26 @@ blockquote.big-quote{
 .sci-card .yr{color:var(--text-faint);font-size:.78rem}
 .sci-card p{margin-top:10px;font-size:.86rem;color:var(--text-dim)}
 
-/* ============ PRICING ============ */
-.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-@media (max-width:980px){.tier-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.tier-grid{grid-template-columns:1fr}}
-.tier{background:var(--ink-1);border:1px solid var(--line);padding:30px 26px;display:flex;flex-direction:column;gap:14px;position:relative}
-.tier.hi{border-color:var(--gold-dim);box-shadow:var(--shadow-sm)}
-.tier .badge{position:absolute;top:-11px;left:26px;background:var(--gold);color:#1a1206;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px}
-.tier .tname{font-family:var(--serif);font-size:1.15rem}
-.tier .price{font-family:var(--serif);font-size:1.7rem;color:var(--gold-bright)}
-.tier .price small{font-size:.72rem;color:var(--text-faint);font-family:var(--sans)}
-.tier .who{font-size:.78rem;color:var(--text-faint)}
-.tier ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:6px}
-.tier li{font-size:.84rem;color:var(--text-dim);display:flex;gap:8px}
-.tier li::before{content:"·";color:var(--gold)}
-.tier-cta{margin-top:auto;padding-top:4px}
-.tier-stamp{position:absolute;top:18px;right:-8px;transform:rotate(9deg);border:2px solid #c0392b;color:#e0574a;font-family:var(--sans);font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:4px;background:rgba(192,57,43,.08);pointer-events:none}
-
-/* ============ B2B ============ */
-.b2b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-@media (max-width:900px){.b2b-grid{grid-template-columns:1fr}}
-.b2b-card{border:1px solid var(--line);padding:30px;background:var(--ink-1)}
-.b2b-card h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:8px}
-.b2b-card .price{color:var(--gold);font-size:.86rem;font-weight:600;margin-bottom:14px}
-.b2b-card p{color:var(--text-dim);font-size:.88rem}
+/* ============ CURSO ONLINE ============ */
+.course-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+@media (max-width:900px){.course-grid{grid-template-columns:1fr;gap:40px}}
+.course-subtitle{font-family:var(--serif);font-size:1.3rem;margin-bottom:24px}
+.curriculo-item{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line)}
+.curriculo-item:last-child{border-bottom:1px solid var(--line)}
+.curriculo-num{font-family:var(--serif);font-style:italic;color:var(--gold-dim);font-size:1.3rem;flex:none;width:34px}
+.curriculo-item .pain-pilar{margin-bottom:6px}
+.curriculo-item p{color:var(--text-dim);font-size:.92rem;line-height:1.6}
+.course-price-card{background:var(--ink-1);border:1px solid var(--gold-dim);box-shadow:var(--shadow-lg);padding:36px 30px;position:sticky;top:100px}
+.course-price-eyebrow{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.course-price-card .cname{font-family:var(--serif);font-size:1.4rem;margin-bottom:4px}
+.course-price-card .cwho{font-size:.84rem;color:var(--text-faint);margin-bottom:20px}
+.course-price-card .price{font-family:var(--serif);font-size:2.1rem;color:var(--gold-bright)}
+.course-price-card .price small{display:block;font-size:.82rem;color:var(--text-faint);font-family:var(--sans);font-weight:400;margin-top:2px}
+.course-price-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:22px 0 26px}
+.course-price-card li{font-size:.88rem;color:var(--text-dim);display:flex;gap:8px;line-height:1.4}
+.course-price-card li::before{content:"✓";color:var(--gold);flex:none;font-weight:700}
+.guarantee{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:.82rem;color:var(--text-faint)}
+.guarantee svg{width:20px;height:20px;flex:none;stroke:var(--gold-dim)}
 
 /* ============ FAQ ============ */
 .faq-item{border-bottom:1px solid var(--line)}
@@ -472,8 +467,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <a href="#metodo">O Método</a>
       <a href="#diagnostico">Diagnóstico</a>
       <a href="#livros">A Trilogia</a>
-      <a href="#comunidade">Comunidade</a>
-      <a href="#palestras">Palestras</a>
+      <a href="#comunidade">Curso Online</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
@@ -584,7 +578,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       </div>
       <div class="pain-card">
         <p class="pain-quote">"Toda vez que tento mudar, dura uma semana e volta ao de sempre."</p>
-        <div class="pain-fix"><span class="pain-pilar">Pilar Continuidade</span>resolvido na <a href="#comunidade">Comunidade</a></div>
+        <div class="pain-fix"><span class="pain-pilar">Pilar Continuidade</span>resolvido no <a href="#comunidade">Curso Online</a></div>
       </div>
       <div class="pain-card">
         <p class="pain-quote">"Não sei se estou formando um adulto seguro — ou só evitando o conflito de hoje."</p>
@@ -605,8 +599,8 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">TUDO O QUE OFERECEMOS</div>
-      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Quatro caminhos. Um único método.</h2>
-      <p class="lede" style="margin-top:16px">Comece por onde fizer mais sentido pra você agora — todos os caminhos levam ao mesmo lugar: uma casa com cultura escolhida, não acidental.</p>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Três caminhos. Um único método.</h2>
+      <p class="lede" style="margin-top:16px">Comece pelo diagnóstico gratuito — depois, os livros e o curso levam o método pra dentro da sua rotina, no ritmo que fizer sentido pra você.</p>
     </div>
     <div class="res-grid reveal-stagger">
       <a href="#diagnostico" class="res-card">
@@ -624,18 +618,11 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <span class="res-link">Ver os livros →</span>
       </a>
       <a href="#comunidade" class="res-card">
-        <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-6 6-6h0"/><path d="M15 5.5a3.2 3.2 0 1 1 0 6.4"/><path d="M14.5 14c3 .3 5.5 2.8 5.5 6"/></svg></div>
-        <div class="res-tag">Curso &amp; Comunidade</div>
-        <h3>Mentoria contínua</h3>
-        <p>Do grupo gratuito à mentoria individual — o próximo passo depois do laudo.</p>
-        <span class="res-link">Ver a comunidade →</span>
-      </a>
-      <a href="#palestras" class="res-card">
-        <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.2"/><path d="M8 20h8M12 16v4"/><path d="M7 10l3-3 3 2 4-4"/></svg></div>
-        <div class="res-tag">Para empresas e escolas</div>
-        <h3>Palestras &amp; Workshops</h3>
-        <p>Leve o método para a sua equipe, escola ou igreja, com diagnóstico coletivo ao vivo.</p>
-        <span class="res-link">Ver programas →</span>
+        <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v15"/><path d="M6 22a2 2 0 0 1 0-4h13v4Z"/><path d="M9 8h7M9 11h5"/></svg></div>
+        <div class="res-tag">Curso Online</div>
+        <h3>Formando Filhos de Caráter</h3>
+        <p>O método em 6 módulos práticos, com workbook e liberação guiada — o próximo passo depois do laudo.</p>
+        <span class="res-link">Acessar o curso →</span>
       </a>
     </div>
   </div>
@@ -933,71 +920,80 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- ============ COMUNIDADE ============ -->
+<!-- ============ CURSO ONLINE ============ -->
 <section id="comunidade" style="background:var(--ink-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">DEPOIS DO DIAGNÓSTICO</div>
-      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Sua jornada continua onde o laudo termina</h2>
-      <p class="lede" style="margin-top:16px">Cada perfil de resultado tem um próximo passo recomendado — do grupo gratuito à mentoria individual.</p>
+    <div class="section-head reveal" style="max-width:760px">
+      <div class="eyebrow">CURSO ONLINE · FORMANDO FILHOS DE CARÁTER</div>
+      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Livros dão o mapa. O curso constrói o hábito.</h2>
+      <p class="lede" style="margin-top:16px">O diagnóstico mostrou onde você está. Os livros explicaram o método. O que falta agora é a prática guiada, módulo a módulo, até virar rotina — não mais uma tentativa que dura uma semana e volta ao de sempre.</p>
     </div>
-    <div class="tier-grid reveal-stagger">
-      <div class="tier">
-        <div class="tier-stamp">Em breve</div>
-        <div class="tname">Gratuito</div>
-        <div class="price">R$ 0</div>
-        <div class="who">Grupos "Pais que Constroem" / "Mães que Soltam"</div>
-        <ul><li>Comunidade aberta no WhatsApp</li><li>Conteúdo semanal por pilar</li><li>Acesso ao diagnóstico</li></ul>
-      </div>
-      <div class="tier hi">
-        <div class="tier-stamp">Em breve</div>
-        <div class="badge">Recomendado score 0–12</div>
-        <div class="tname">Essencial</div>
-        <div class="price">R$ 47<small>/mês</small></div>
-        <div class="who">Perfil Iniciante e Em Construção</div>
-        <ul><li>1 sessão ao vivo por mês</li><li>Grupo fechado por público</li><li>Trilhas guiadas por pilar</li></ul>
-      </div>
-      <div class="tier">
-        <div class="tname">Curso Online</div>
-        <div class="price">R$ 358,80<small>/curso</small></div>
-        <div class="who">Curso "Formando Filhos de Caráter" — Método ISAN</div>
-        <ul><li>Curso completo Os Cinco Pilares</li><li>Workbooks práticos por módulo</li><li>Liberação progressiva de aulas</li></ul>
-        <div class="tier-cta"><a href="https://pay.hotmart.com/F106747484X" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="width:100%;justify-content:center">Comprar o curso — 12x de R$ 29,90</a></div>
-      </div>
-      <div class="tier">
-        <div class="tier-stamp">Em breve</div>
-        <div class="tname">VIP Construtor</div>
-        <div class="price">R$ 497<small>/mês</small></div>
-        <div class="who">Convite direto do laudo — score 13–18</div>
-        <ul><li>Tudo do Curso Online</li><li>Sessão individual semestral</li><li>Mastermind fechado</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ B2B ============ -->
-<section id="palestras">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">PARA EMPRESAS, ESCOLAS E IGREJAS</div>
-      <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Palestras, workshops e diagnóstico coletivo</h2>
-      <p class="lede" style="margin-top:16px">O diagnóstico transforma a proposta institucional: em vez de "venha ouvir uma palestra sobre família", o convite é "veja o dado — e veja como ele se aplica à sua equipe."</p>
-    </div>
-    <div class="b2b-grid reveal-stagger">
-      <div class="b2b-card">
-        <h4>Palestra "Os Cinco Pilares"</h4>
-        <div class="price">60–90 min · R$ 8.000 – R$ 15.000</div>
-        <p>Para empresas e conferências. Apresentação do método completo, com aplicação prática dos cinco pilares.</p>
+    <div class="course-grid reveal-stagger">
+      <div class="course-curriculum">
+        <h3 class="course-subtitle">O que você vai construir, módulo a módulo</h3>
+
+        <div class="curriculo-item">
+          <span class="curriculo-num">00</span>
+          <div>
+            <span class="pain-pilar">Introdução</span>
+            <p>A origem do Método ISAN e a equação da formação — por que amor sem método vira ansiedade, e método sem amor vira frieza.</p>
+          </div>
+        </div>
+        <div class="curriculo-item">
+          <span class="curriculo-num">01</span>
+          <div>
+            <span class="pain-pilar">Pilar Presença</span>
+            <p>A diferença entre estar no mesmo cômodo e estar realmente disponível — e o ritual diário que devolve presença de verdade.</p>
+          </div>
+        </div>
+        <div class="curriculo-item">
+          <span class="curriculo-num">02</span>
+          <div>
+            <span class="pain-pilar">Pilar Exemplo</span>
+            <p>Seu filho não faz o que você manda — ele replica o que você é quando ninguém está cobrando.</p>
+          </div>
+        </div>
+        <div class="curriculo-item">
+          <span class="curriculo-num">03</span>
+          <div>
+            <span class="pain-pilar">Pilar Relacionamento</span>
+            <p>A conta bancária emocional: como fazer mais depósitos do que saques na relação com seu filho.</p>
+          </div>
+        </div>
+        <div class="curriculo-item">
+          <span class="curriculo-num">04</span>
+          <div>
+            <span class="pain-pilar">Pilar Intencionalidade</span>
+            <p>Sair do piloto automático — decisões guiadas pela visão de quem seu filho vai se tornar, não só pelo incêndio de hoje.</p>
+          </div>
+        </div>
+        <div class="curriculo-item">
+          <span class="curriculo-num">05</span>
+          <div>
+            <span class="pain-pilar">Pilar Continuidade</span>
+            <p>Por que toda mudança dura uma semana — e o que fazer pra transformar insight em hábito que realmente fica.</p>
+          </div>
+        </div>
       </div>
-      <div class="b2b-card">
-        <h4>Workshop "Diagnóstico ao Vivo"</h4>
-        <div class="price">3 horas · R$ 15.000 – R$ 25.000</div>
-        <p>Todos os participantes respondem ao diagnóstico durante o evento. César apresenta os resultados coletivos ao vivo.</p>
-      </div>
-      <div class="b2b-card">
-        <h4>Programa Corporativo Completo</h4>
-        <div class="price">1 dia · R$ 30.000 – R$ 50.000</div>
-        <p>Diagnóstico + workshop + kit de livros + 30 dias de acesso à comunidade para todos os colaboradores.</p>
+
+      <div class="course-price-card">
+        <div class="course-price-eyebrow">Acesso imediato</div>
+        <div class="cname">Formando Filhos de Caráter</div>
+        <div class="cwho">Curso online completo — Método ISAN</div>
+        <div class="price">R$ 358,80<small>ou 12x de R$ 29,90 sem juros</small></div>
+        <ul>
+          <li>Aula em vídeo + workbook prático por módulo</li>
+          <li>Liberação guiada, módulo a módulo — pra aplicar de verdade, não maratonar e esquecer</li>
+          <li>Acesso direto pela área de membros, no seu ritmo</li>
+        </ul>
+        <a href="https://pay.hotmart.com/F106747484X" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center">Acessar o curso agora
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="guarantee">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4 6v6c0 5 3.4 8.4 8 9.5 4.6-1.1 8-4.5 8-9.5V6l-8-3.5Z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>7 dias de garantia incondicional — se não fizer sentido, é reembolso total.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1060,13 +1056,20 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <div class="faq-a"><p>Em observação prática de mais de uma década e em literatura científica sobre apego, aprendizagem social e formação de hábitos — Bowlby, Bandura, Gottman, Covey, Duhigg e Duckworth, entre outros.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Como funciona a Comunidade?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>Depois do diagnóstico, você recebe uma recomendação de tier com base no seu score — do grupo gratuito no WhatsApp até mentoria individual, conforme sua fase na jornada.</p></div>
+        <button class="faq-q"><span>Como funciona a liberação das aulas do curso?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>De forma guiada: o Módulo 0 já libera na hora da compra, e os módulos seguintes chegam nos dias seguintes, direto no seu e-mail e na área de membros. É de propósito — assim você aplica cada pilar antes de passar pro próximo, em vez de assistir tudo de uma vez e esquecer.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>E se eu não gostar do curso?</span><span class="plus"></span></button>
+        <div class="faq-a"><p>Você tem 7 dias de garantia incondicional. Se não fizer sentido pra você, é só pedir o reembolso — sem perguntas.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q"><span>Funciona mesmo se meu filho só pensa em jogo (Roblox, Fortnite...)?</span><span class="plus"></span></button>
         <div class="faq-a"><p>Sim. O método não compete removendo a tela — reconstrói o que só o mundo real oferece: presença, vínculo e conquista genuína. Funciona junto com o tempo de tela, não como proibição.</p></div>
       </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:40px">
+      <a href="mailto:cesarsouto@cesarsouto.com" class="btn btn-ghost btn-sm">Fale comigo</a>
     </div>
   </div>
 </section>
@@ -1108,13 +1111,13 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
         <a href="#recursos">Todos os recursos</a>
         <a href="#livros">A Trilogia</a>
         <a href="#diagnostico">Diagnóstico gratuito</a>
-        <a href="#comunidade">Comunidade</a>
+        <a href="#comunidade">Curso Online</a>
       </div>
       <div class="foot-col">
         <h5>Institucional</h5>
-        <a href="#palestras">Palestras &amp; empresas</a>
         <a href="#autor">Sobre o autor</a>
         <a href="#faq">FAQ</a>
+        <a href="mailto:cesarsouto@cesarsouto.com">Fale comigo</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1146,7 +1149,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
   navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
 
   // ---- active nav link on scroll ----
-  var sections = ['recursos','metodo','diagnostico','livros','comunidade','palestras','faq'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var sections = ['recursos','metodo','diagnostico','livros','comunidade','faq'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
   var navA = navLinks.querySelectorAll('a');
   var navObs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
