@@ -1345,11 +1345,15 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
     form.reset();
   });
 
-  // ---- vídeos do YouTube (facade: só carrega o iframe ao clicar) ----
+  // ---- vídeos do YouTube (abre no YouTube em nova aba) ----
+  // A incorporação inline (iframe) depende do YouTube liberar o embed vídeo a
+  // vídeo, o que se mostrou inconsistente (funcionava e depois voltava a
+  // bloquear com "Erro 153"/"Faça login" sem nenhuma mudança de configuração
+  // nosso lado). Abrir em nova aba nunca falha para quem visita o site.
   document.querySelectorAll('.video-embed').forEach(function(videoEmbed){
     var playVideo = function(){
       var id = videoEmbed.getAttribute('data-yt');
-      videoEmbed.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1" title="Vídeo do Método ISAN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
     };
     videoEmbed.addEventListener('click', playVideo);
     videoEmbed.addEventListener('keydown', function(e){
