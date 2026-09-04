@@ -16,6 +16,9 @@ let out = template
   .replace('{{COVER1}}', imgDataUri('livro1.jpg', 'image/jpeg'))
   .replace('{{COVER2}}', imgDataUri('livro2.jpg', 'image/jpeg'))
   .replace('{{COVER3}}', imgDataUri('livro3.jpg', 'image/jpeg'))
+  .replace('{{COVER4}}', imgDataUri('livro4.jpg', 'image/jpeg'))
+  .replace('{{COVER5}}', imgDataUri('livro5.jpg', 'image/jpeg'))
+  .replace('{{COVER6}}', imgDataUri('livro6.jpg', 'image/jpeg'))
   .split('{{HERO_BOY}}').join(imgDataUri('menino_hero.png', 'image/png'))
   .split('{{LOGO_METODO_ISAN}}').join(imgDataUri('logo-metodo-isan.png', 'image/png'))
   .split('{{AUTOR}}').join(imgDataUri('autor-cesar.jpg', 'image/jpeg'));
