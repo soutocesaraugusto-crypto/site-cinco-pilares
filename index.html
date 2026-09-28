@@ -1145,6 +1145,7 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
       <p class="lede">Deixe seu e-mail para receber novidades dos livros, o convite para a comunidade gratuita e o link direto do diagnóstico.</p>
       <form class="capture" id="capture-form">
         <input type="email" placeholder="seu@email.com" required id="capture-email">
+        <input type="text" id="capture-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
         <button type="submit" class="btn btn-gold">Quero receber</button>
       </form>
       <div class="capture-msg" id="capture-msg"></div>
@@ -1407,13 +1408,27 @@ footer{padding:70px 0 40px;border-top:1px solid var(--line)}
 
   renderQuestion();
 
-  // ---- newsletter capture (simulated, no backend in this preview) ----
+  // ---- captura de e-mail: grava no servidor do diagnóstico (antes só simulava) ----
   var form = document.getElementById('capture-form');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var email = document.getElementById('capture-email').value;
-    document.getElementById('capture-msg').textContent = 'Recebido! Em breve você receberá novidades dos livros em ' + email + '.';
-    form.reset();
+    var msg = document.getElementById('capture-msg');
+    var botao = form.querySelector('button');
+    var email = document.getElementById('capture-email').value.trim();
+    botao.disabled = true;
+    msg.textContent = 'Enviando...';
+    fetch('https://diagnostico.metodoisan.com.br/api/inscricao', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, origem: 'site-cta-final', website: document.getElementById('capture-website').value })
+    }).then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+      .then(function(x){
+        if (!x.ok) throw new Error(x.d.erro || 'Não foi possível enviar.');
+        msg.textContent = 'Recebido! Em breve você receberá novidades dos livros em ' + email + '.';
+        form.reset();
+      })
+      .catch(function(err){ msg.textContent = err.message + ' Se preferir, faça o diagnóstico gratuito.'; })
+      .then(function(){ botao.disabled = false; });
   });
 
   // ---- vídeos: mp4 hospedado direto toca inline; YouTube (legado) abre em nova aba ----
